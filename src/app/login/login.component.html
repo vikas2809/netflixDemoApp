@@ -1,0 +1,48 @@
+<div class="container" style="margin-top:2%;margin-bottom:5%;">
+  
+    <div class="row" id="pwd-container">
+      <div class="col-md-4"></div>
+  
+      <div class="col-md-4">
+        <section class="login-form">
+          <form>
+            <img src="../assets/images/logo1.png" style="margin-left:0px;" class="img-responsive" alt="" />
+            <input type="email" name="email" placeholder="Email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required class="form-control input-lg"/>
+  
+            <input type="password" class="form-control input-lg" id="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" required="" />
+  
+  
+            <div class="pwstrength_viewport_progress"></div>
+  
+  
+            <button (click)="onSubmit(email,password)" type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
+        
+            <div>
+                <h3>{{userError}}</h3>
+              <a href="#" class="fa fa-facebook"></a>
+              <a (click)="onCreateAccount()">Create account</a> or <a href="#">reset password</a>
+            </div>
+  
+          </form>
+  
+          <!-- <div class="form-links">
+            <a href="#">www.website.com</a>
+          </div> -->
+        </section>
+        </div>
+  
+        <div class="col-md-4"></div>
+  
+  
+    </div>
+  
+    <!-- <p>
+      <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fbootsnipp.com%2Fiframe%2FW00op" target="_blank"><small>HTML</small><sup>5</sup></a>
+      <br>
+      <br>
+  
+    </p> -->
+  
+  
+  </div>
+  

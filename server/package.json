@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "netflix demo app",
+  "main": "app.js",
+  "scripts": {
+    "test": "netflix demo app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikas2809/netflixDemoApp.git"
+  },
+  "keywords": [
+    "Netflix",
+    "Demo",
+    "App"
+  ],
+  "author": "Vikas Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vikas2809/netflixDemoApp/issues"
+  },
+  "homepage": "https://github.com/vikas2809/netflixDemoApp#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.13.1"
+  }
+}
