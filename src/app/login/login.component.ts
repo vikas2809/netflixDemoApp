@@ -45,7 +45,8 @@ export class LoginComponent implements OnInit {
         let token=userData.token;
         if(userData.success===true)
         {
-        localStorage.setItem('user',JSON.stringify(this.valid_user.role));
+        localStorage.setItem('user',this.valid_user.role);
+        localStorage.setItem('UserInfo',JSON.stringify(this.valid_user));
         localStorage.setItem('token',JSON.stringify(token));
         routeThat.router.navigate(['\dashboard']);
         }

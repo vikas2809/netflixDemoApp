@@ -1,0 +1,10 @@
+#background{
+    background-image: url('http://localhost:4200/assets/images/showDetails.jpg');
+    margin-top:-2%;
+    padding: 71px 0 65px 0;
+    position: relative;
+}
+img{
+    height: 500px;
+    width: 500px;
+  }

@@ -1,0 +1,26 @@
+[
+  {
+    "imgUrl":"assets/images/genre/hollywood.jpg",
+    "name" :"Hollywood"
+  },
+  {
+    "imgUrl":"assets/images/genre/horror.jpg",
+    "name" :"Horror"
+  },
+  {
+    "imgUrl":"assets/images/genre/south.jpg",
+    "name" :"South"
+  },
+  {
+    "imgUrl":"assets/images/genre/sport.jpg",
+    "name" :"Sport"
+  },
+  {
+    "imgUrl":"assets/images/genre/thriller.jpg",
+    "name" :"Thriller"
+  },
+  {
+    "imgUrl":"assets/images/genre/war.jpg",
+    "name" :"War"
+  }
+]

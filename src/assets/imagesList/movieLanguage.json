@@ -1,0 +1,26 @@
+[
+  {
+    "imgUrl":"assets/images/language/hindi.jpg",
+    "name" :"Hindi"
+  },
+  {
+    "imgUrl":"assets/images/language/english.jpg",
+    "name" :"English"
+  },
+  {
+    "imgUrl":"assets/images/language/tamil.jpg",
+    "name" :"Tamil"
+  },
+  {
+    "imgUrl":"assets/images/language/telugu.jpg",
+    "name" :"Telugu"
+  },
+  {
+    "imgUrl":"assets/images/language/marathi.jpg",
+    "name" :"Marathi"
+  },
+  {
+    "imgUrl":"assets/images/language/regional.jpg",
+    "name" :"Bhojpuri "
+  }
+]

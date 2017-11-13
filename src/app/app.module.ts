@@ -15,6 +15,15 @@ import { ControlMessagesComponent } from './control-messages/control-messages.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ValidationService } from './validation.service';
 import { DatePipe } from '@angular/common';
+import { TvShowsComponent } from './tv-shows/tv-shows.component';
+import { MoviesComponent } from './movies/movies.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { AddMovieTvShowsComponent } from './add-movie-tv-shows/add-movie-tv-shows.component';
+import { DeleteMovieTvShowsComponent } from './delete-movie-tv-shows/delete-movie-tv-shows.component';
+import { UpdateMovieTvShowsComponent } from './update-movie-tv-shows/update-movie-tv-shows.component';
+import { WelcomeImageComponent } from './welcome-image/welcome-image.component';
+import { MoviesTvShowListComponent } from './movies-tv-show-list/movies-tv-show-list.component';
+import { MoviesTvShowListDetailsComponent } from './movies-tv-show-list-details/movies-tv-show-list-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +35,16 @@ import { DatePipe } from '@angular/common';
     SignUpComponent,
     HomeComponent,
     ControlMessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    TvShowsComponent,
+    MoviesComponent,
+    AdminMenuComponent,
+    AddMovieTvShowsComponent,
+    DeleteMovieTvShowsComponent,
+    UpdateMovieTvShowsComponent,
+    WelcomeImageComponent,
+    MoviesTvShowListComponent,
+    MoviesTvShowListDetailsComponent
   ],
   imports: [
     BrowserModule,

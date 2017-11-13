@@ -1,0 +1,26 @@
+[
+  {
+    "imgUrl":"assets/images/tv series/genre/action.jpg",
+    "name" :"Action"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/animated.jpg",
+    "name" :"Animation"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/bollywood.jpg",
+    "name" :"Bollywood"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/comedy.jpg",
+    "name" :"Comedy"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/crime.jpg",
+    "name" :"Crime"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/drama.jpg",
+    "name" :"Drama"
+  }
+]

@@ -9,6 +9,7 @@ var movie_schema=mongoose.Schema;
     var movieSchema=new movie_schema({
         movieID: {type:String, unique:true},
         movieOrigin: {type:String},
+        language: {type:String},
         name: {type: String},
         imgUrl: {type: String},
         description: {type: String},

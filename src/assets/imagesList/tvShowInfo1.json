@@ -1,0 +1,26 @@
+[
+  {
+    "imgUrl":"assets/images/tv series/genre/education.jpg",
+    "name" :"Education"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/fiction.jpg",
+    "name" :"Fiction"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/horror.jpg",
+    "name" :"Horror"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/sport.jpg",
+    "name" :"Sport"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/supernatural.jpg",
+    "name" :"Supernatural"
+  },
+  {
+    "imgUrl":"assets/images/tv series/genre/thriller.jpg",
+    "name" :"Thriller"
+  }
+]

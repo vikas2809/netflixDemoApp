@@ -1,0 +1,68 @@
+<div style="margin-top:-2%;">
+  <div>
+  <marquee direction="right"><h1 style="color:grey;">See our Latest Movies Collections Browse through it</h1></marquee>
+  </div>
+  <app-welcome-image></app-welcome-image>
+</div>
+
+<div class="container-fluid">
+      <h1>Movies Genres</h1>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="carousel slide media-carousel-up hidden-xs" id="media-up">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="row">
+              <div *ngFor="let movie of moviesList"  class="col-xs-2">
+                <a class="thumbnail" (click)="movieGenres(movie.name)"><img alt="" src={{movie.imgUrl}}><h1 style="text-align:center;">{{movie.name}}</h1></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="row">
+              <div *ngFor="let movies of moviesList1"  class="col-xs-2">
+                <a (click)="movieGenres(movies.name)"  class="thumbnail"><img alt="" src={{movies.imgUrl}}><h1 style="text-align:center;">{{movies.name}}</h1></a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <a data-slide="prev" href="#media-up" class="left carousel-control">‹</a>
+        <a data-slide="next" href="#media-up" class="right carousel-control">›</a>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+<div class="container-fluid">
+      <h1>Movies By Language</h1>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="carousel slide media-carousel-up hidden-xs" id="media-up">
+        <div class="carousel-inner">
+          <div class="item  active">
+            <div class="row">
+              <div class="col-xs-2" *ngFor="let language of moviesLanguageList">
+                <a (click)="movieLanguage(language.name)" class="thumbnail"><img alt="" src={{language.imgUrl}}><h1 style="text-align:center;">{{language.name}}</h1></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>

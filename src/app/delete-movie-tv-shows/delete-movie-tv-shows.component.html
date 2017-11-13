@@ -1,0 +1,110 @@
+<div class="container">
+    <div  class="row">
+		<div  class="col-md-12">
+
+			<div  class="tabbable-panel">
+				<div  class="tabbable-line">
+					<ul class="nav nav-tabs ">
+						<li class="active">
+							<a href="#tab_default_1" data-toggle="tab">
+							Movie </a>
+						</li>
+						<li>
+							<a href="#tab_default_2" data-toggle="tab">
+							Tv Show </a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_default_1">
+
+              <form [formGroup]="movieForm" class="form-horizontal">
+              <fieldset>
+
+              <!-- Form Name -->
+              <h1 style="text-align:center;">Delete Movie </h1>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="movieID">ENTER MOVIEID</label>
+                <div class="col-md-4">
+                <input id="movieID" formControlName="movieID" type="text" placeholder="enter the movieID" class="form-control input-md" required="">
+                  <control-messages [control]="movieForm.controls.movieID"></control-messages>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="confirm_movieID">RE-TYPE MOVIEID</label>
+                <div class="col-md-4">
+                <input id="confirm_movieID" formControlName="confirm_movieID" type="text" placeholder="enter the movieID" class="form-control input-md" required="">
+                  <control-messages [control]="movieForm.controls.confirm_movieID"></control-messages>
+                </div>
+              </div>
+
+              <!-- Button (Double) -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id"></label>
+                <div class="col-md-8">
+                  <button id="button1id" (click)="deleteMovie()" type="submit" [disabled]="!movieForm.valid" tabindex="7" class="btn btn-success">DELETE</button>
+                  <button (click)="onCancel()" id="button2id" name="button2id" class="btn btn-danger">CANCEL</button>
+                </div>
+              </div>
+
+              </fieldset>
+              </form>
+
+              <div>
+                <h3 style="margin-left:35%;">{{successMsg}}</h3>
+              </div>
+
+
+
+						</div>
+						<div id="addTvShow" class="tab-pane" id="tab_default_2">
+
+
+
+              <form [formGroup]="showForm" class="form-horizontal">
+              <fieldset>
+
+              <!-- Form Name -->
+              <h1 style="text-align:center;">Delete Tv Show </h1>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="showID">ENTER SHOWID</label>
+                <div class="col-md-4">
+                <input id="showID" formControlName="showID" type="text" placeholder="enter the showID" class="form-control input-md" required="">
+                  <control-messages [control]="showForm.controls.showID"></control-messages>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="confirm_showID">RE-TYPE SHOWID</label>
+                <div class="col-md-4">
+                <input id="confirm_showID" formControlName="confirm_showID" type="text" placeholder="enter the showID" class="form-control input-md" required="">
+                  <control-messages [control]="showForm.controls.confirm_showID"></control-messages>
+                </div>
+              </div>
+
+              <!-- Button (Double) -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id"></label>
+                <div class="col-md-8">
+                  <button id="button1id" (click)="deleteTvShow()" type="submit" [disabled]="!showForm.valid" tabindex="7" class="btn btn-success">DELETE</button>
+                  <button id="button2id" name="button2id" class="btn btn-danger">CANCEL</button>
+                </div>
+              </div>
+
+              </fieldset>
+              </form>
+
+              <div>
+                <h3 style="margin-left:35%;">{{successMsg}}</h3>
+              </div>
+
+						</div>
+					</div>
+				</div>
+			</div>

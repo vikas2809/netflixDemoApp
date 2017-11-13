@@ -1,0 +1,14 @@
+[
+  {
+    "imgUrl":"assets/images/tv series/language/hindi.jpg",
+    "name" :"Hindi"
+  },
+  {
+    "imgUrl":"assets/images/tv series/language/english.jpg",
+    "name" :"English"
+  },
+  {
+    "imgUrl":"assets/images/tv series/language/japanese.png",
+    "name" :"Japanese"
+  }
+]

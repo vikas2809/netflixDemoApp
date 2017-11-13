@@ -1,0 +1,10 @@
+<div>
+  <!-- <h3 style="margin-top:100px;text-align:center;color:blue;">{{welcome}}</h3> -->
+  <div class="floating-box">
+    <div class="floating-box" *ngFor="let showInfo of showInfoList">
+    <h1 style="text-align:center;"><b>{{showInfo.name}}</b></h1>
+          <a [routerLink]="['/showDetails',{name:showInfo.name}]"><img src={{showInfo.imgUrl}}></a><br>
+        </div>
+</div>
+<!-- <h1>Hello</h1> -->
+</div>

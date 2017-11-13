@@ -1,0 +1,72 @@
+<div id="background">
+<div style="margin-top:-2%;">
+  <div>
+  <marquee direction="right"><h1 style="color:white;">See our Latest TV Collections Browse through it</h1></marquee>
+  </div>
+  <app-welcome-image></app-welcome-image>
+</div>
+
+<div class="container-fluid">
+      <h1 style="color:white;">TV Show Genres</h1>
+<div class="row">
+<div class="col-sm-12">
+      <div class="carousel slide media-carousel-up hidden-xs" id="media-up">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="row">
+              <div class="col-xs-2" *ngFor="let tvShow of tvShowList">
+                <a class="thumbnail" (click)="tvShowGenres(tvShow.name)"><img alt="" src={{tvShow.imgUrl}}><h1 style="text-align:center;">{{tvShow.name}}</h1></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="row">
+              <div class="col-xs-2" *ngFor="let tvShow of tvShowList1">
+                <a class="thumbnail" (click)="tvShowGenres(tvShow.name)"><img alt="" src={{tvShow.imgUrl}}><h1 style="text-align:center;">{{tvShow.name}}</h1></a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div>
+        <a style="margin-left:-10%;" data-slide="prev" href="#media-up" class="left carousel-control">‹</a>
+        <a style="margin-right:-10%;" data-slide="next" href="#media-up" class="right carousel-control">›</a>
+      </div>
+      </div>
+
+   </div>
+   </div>
+
+
+
+</div>
+
+
+
+<div class="container-fluid">
+      <h1 style="text-align:center;color:white">TV Shows By Language</h1>
+<div class="row">
+    <div class="col-sm-12">
+      <div class="carousel slide media-carousel-up hidden-xs" id="media-up">
+        <div class="carousel-inner">
+          <div class="item  active">
+            <div class="row">
+              <div class="col-xs-2" style="float:left;margin-left:10%;" *ngFor="let tvShowLanguage of tvShowLanguageList">
+                <a (click)="tvshowLanguage(tvShowLanguage.name)" class="thumbnail"><img alt="" src={{tvShowLanguage.imgUrl}}><h1 style="text-align:center;">{{tvShowLanguage.name}}</h1></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+</div>

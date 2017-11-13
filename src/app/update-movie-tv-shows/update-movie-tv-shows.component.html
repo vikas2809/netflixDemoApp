@@ -1,0 +1,268 @@
+
+<div class="container" style="margin:bottom:3%;">
+    <div  class="row">
+		<div  class="col-md-12">
+
+			<div  class="tabbable-panel">
+				<div  class="tabbable-line">
+					<ul class="nav nav-tabs ">
+						<li class="active">
+							<a href="#tab_default_1" data-toggle="tab">
+							Movie </a>
+						</li>
+						<li>
+							<a href="#tab_default_2" data-toggle="tab">
+							Tv Show </a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_default_1">
+              <div *ngIf="findMovieToBeUpdate">
+                  <form class="form-horizontal">
+                  <fieldset>
+
+                  <!-- Form Name -->
+                  <h1 style="text-align:center;">Update Movie </h1>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <!-- <label class="col-md-4 control-label" for="movieID">ENTER MOVIEID</label> -->
+                    <div class="col-md-4">
+                    <input style="margin-left:100%;" id="movieID" name="movieID" [(ngModel)]="movieID" type="text" placeholder="Enter the movieID" class="form-control input-md" required="">
+
+                    </div>
+                  </div>
+
+                  <!-- Button (Double) -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="button1id"></label>
+                    <div class="col-md-8">
+                      <button style="margin-left:15%;text-align:center;" (click)="findMovie(movieID)" id="button1id" name="button1id" class="btn btn-success">FIND</button>
+                    </div>
+                  </div>
+
+                  </fieldset>
+                  </form>
+              </div>
+              <form *ngIf="updateMovie" class="form-horizontal">
+              <!-- <fieldset> -->
+
+              <!-- Form Name -->
+              <legend style="text-align:center;">Update Movies</legend>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="movieID">ID</label>
+                <div class="col-md-4">
+                <input id="movieID" [ngModelOptions]="{standalone: true}" [(ngModel)]="movieID" type="text" placeholder="movie id" required class="form-control input-md">
+                  <!-- <control-messages [control]="movieForm.controls.movieID"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="movieOrigin">Origin</label>
+                <div class="col-md-4">
+                <input id="movieOrigin" [ngModelOptions]="{standalone: true}" [(ngModel)]="movieOrigin" type="text" placeholder="hollywood..." class="form-control input-md">
+                  <!-- <control-messages [control]="movieForm.controls.movieOrigin"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="language">Language</label>
+                <div class="col-md-4">
+                <input id="language" [(ngModel)]="language" [ngModelOptions]="{standalone: true}" type="text" placeholder="language" class="form-control input-md">
+                  <!-- <control-messages [control]="movieForm.controls.language"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Name</label>
+                <div class="col-md-4">
+                <input id="name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" type="text" placeholder="title" class="form-control input-md">
+                  <!-- <control-messages [control]="movieForm.controls.name"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="imgUrl">Img</label>
+                <div class="col-md-4">
+                <input id="imgUrl" [(ngModel)]="imgUrl" [ngModelOptions]="{standalone: true}" type="text" placeholder="image url" class="form-control input-md">
+                  <!-- <control-messages [control]="movieForm.controls.imgUrl"></control-messages> -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="description">Description</label>
+                <div class="col-md-4">
+                <textarea class="form-control" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" placeholder="enter complete description" id="description" rows="3"></textarea>
+                  <!-- <control-messages [control]="movieForm.controls.description"></control-messages> -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="duration">Duration</label>
+                <div class="col-md-4">
+                <input id="duration" [(ngModel)]="duration" type="text" [ngModelOptions]="{standalone: true}" placeholder="running time" class="form-control input-md">
+                  <!-- <control-messages [control]="movieForm.controls.duration"></control-messages> -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="genre">Genre</label>
+                <div class="col-md-4">
+                <input id="genre" [(ngModel)]="genre" [ngModelOptions]="{standalone: true}" type="text" placeholder="category" class="form-control input-md">
+                  <!-- <control-messages [control]="movieForm.controls.genre"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Button (Double) -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id"></label>
+                <div class="col-md-8">
+                  <button id="button1id" (click)="saveMovie(movieID,movieOrigin,language,name,imgUrl,description,duration,genre)" type="submit" tabindex="7" class="btn btn-success">CREATE</button>
+                  <button id="button2id" name="button2id" class="btn btn-danger">CANCEL</button>
+                </div>
+
+              </div>
+              <div>
+                <!-- <h3>Hello</h3> -->
+                  <h3 style="margin-left:32%;" class="col-md-4" >{{successMsg}}</h3>
+              </div>
+
+              <!-- </fieldset> -->
+              </form>
+
+
+						</div>
+						<div id="addTvShow" class="tab-pane" id="tab_default_2">
+
+              <div *ngIf="findShowToBeUpdate">
+                  <form class="form-horizontal">
+                  <fieldset>
+
+                  <!-- Form Name -->
+                  <h1 style="text-align:center;">Update Tv Show </h1>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <!-- <label class="col-md-4 control-label" for="movieID">ENTER MOVIEID</label> -->
+                    <div class="col-md-4">
+                    <input style="margin-left:100%;" id="movieID" name="showID" [(ngModel)]="showID" type="text" placeholder="Enter the showID" class="form-control input-md" required="">
+
+                    </div>
+                  </div>
+
+                  <!-- Button (Double) -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="button1id"></label>
+                    <div class="col-md-8">
+                      <button style="margin-left:15%;text-align:center;" (click)="findTvShow(showID)" id="button1id" name="button1id" class="btn btn-success">FIND</button>
+                    </div>
+                  </div>
+
+                  </fieldset>
+                  </form>
+              </div>
+
+              <form *ngIf="updateTvShow" class="form-horizontal">
+              <!-- <fieldset> -->
+
+              <!-- Form Name -->
+              <legend style="text-align:center;">Update Tv Shows</legend>
+
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="showID">ID</label>
+                <div class="col-md-4">
+                <input id="showID" [(ngModel)]="showID" [ngModelOptions]="{standalone: true}" type="text" placeholder="show id" class="form-control input-md" required="">
+                <!-- <control-messages [control]="showForm.controls.showID"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="showOrigin">Origin</label>
+                <div class="col-md-4">
+                <input id="showOrigin" [(ngModel)]="showOrigin" [ngModelOptions]="{standalone: true}" type="text" placeholder="hollywood..." class="form-control input-md" required="">
+                <!-- <control-messages [control]="showForm.controls.showOrigin"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="language">Language</label>
+                <div class="col-md-4">
+                <input id="language" [(ngModel)]="language" [ngModelOptions]="{standalone: true}" type="text" placeholder="language" class="form-control input-md" required="">
+                    <!-- <control-messages [control]="showForm.controls.language"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Name</label>
+                <div class="col-md-4">
+                <input id="name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" type="text" placeholder="title" class="form-control input-md" required="">
+                <!-- <control-messages [control]="showForm.controls.name"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="imgUrl">Img</label>
+                <div class="col-md-4">
+                <input id="imgUrl" [(ngModel)]="imgUrl" [ngModelOptions]="{standalone: true}" type="text" placeholder="image url" class="form-control input-md" required="">
+                <!-- <control-messages [control]="showForm.controls.imgUrl"></control-messages> -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="VILLAGECODE">Description</label>
+                <div class="col-md-4">
+              <textarea class="form-control" [(ngModel)]="description" [ngModelOptions]="{standalone: true}" placeholder="enter complete description" id="description" rows="3"></textarea>
+              <!-- <control-messages [control]="showForm.controls.description"></control-messages> -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="duration">Duration</label>
+                <div class="col-md-4">
+                <input id="duration" [(ngModel)]="duration" [ngModelOptions]="{standalone: true}" type="text" placeholder="running time" class="form-control input-md" required="">
+                <!-- <control-messages [control]="showForm.controls.duration"></control-messages> -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="genre">Genre</label>
+                <div class="col-md-4">
+                <input id="genre" [(ngModel)]="genre" [ngModelOptions]="{standalone: true}" type="text" placeholder="category" class="form-control input-md" required="">
+                <!-- <control-messages [control]="showForm.controls.genre"></control-messages> -->
+                </div>
+              </div>
+
+              <!-- Button (Double) -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id"></label>
+                <div class="col-md-8">
+                  <button id="button1id" (click)="saveTvShow(showID,showOrigin,language,name,imgUrl,description,duration,genre)" type="submit" tabindex="7" class="btn btn-success">CREATE</button>
+                  <button id="button2id" name="button2id" class="btn btn-danger">CANCEL</button>
+                </div>
+              </div>
+              <!-- </fieldset> -->
+
+              </form>
+              <div>
+                  <h3 style="margin-left:32%;" class="col-md-4">{{successMsg}}</h3>
+                  <!-- <h3>Hello</h3> -->
+                  <!-- <h3 style="margin-left:32%;" class="col-md-4">{{showMsg}}</h3> -->
+              </div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
