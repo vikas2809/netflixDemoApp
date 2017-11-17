@@ -22,9 +22,11 @@
   },
   "homepage": "https://github.com/vikas2809/netflixDemoApp#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.0",
-    "mongoose": "^4.13.1"
+    "mongoose": "^4.13.1",
+    "nodemailer": "^4.4.0"
   }
 }

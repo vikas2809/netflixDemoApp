@@ -3,9 +3,6 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Movies } from './movies';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -17,21 +14,26 @@ export class UserService {
   logout:boolean=false;
   valid_user:any=[];
   admin:boolean=false;
+  superAdmin:boolean=false;
   user:boolean=false;
   updateEntry:boolean=false;
   addEntry:boolean=false;
   deleteEntry:boolean=false;
-  constructor(private http:Http,private datePipe:DatePipe,private router:Router) { }
+  public url:string='http://localhost:7777/api/';
+  // let headers = new Headers({ 'Content-Type': 'application/json' });
+  // let options = new RequestOptions({ headers: headers });
+  public headers =new Headers({'Content-Type':'application/json'});
+  // public options = new RequestOptions({ headers: this.headers})
+  options:RequestOptions;
+
+  constructor(private http:Http,private datePipe:DatePipe,private router:Router) {
+    this.options = new RequestOptions({headers: this.headers});
+   }
   authenticateUser(user)
   {
         console.log(user);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-        return this.http.post('http://localhost:7777/api/v1/user/authenticateUser',user,options)
-        .do(
-          data => console.log(data)
-        )
-        .catch(this.handleError);
+        return this.http.post(this.url+'v1/user/authenticateUser',user,this.options)
+        .map(res=>res.json());
   }
   logoutUser()
   {
@@ -55,141 +57,100 @@ export class UserService {
   addUser(user)
   {
    console.log(user);
-   let headers = new Headers({ 'Content-Type': 'application/json' });
-   let options = new RequestOptions({ headers: headers });
-    //let body = JSON.stringify(user);
-  // console.log(body);
-   return this.http.post('http://localhost:7777/api/v1/user/create',user,options)
-   .do(data => console.log(data))
-   .catch(this.handleError)
+   console.log(this.url+'v1/user/create');
+   return this.http.post(this.url+'v1/user/create',user,this.options)
+   .map(res=>res.json());
   }
 
   addMovie(movieDetail)
   {
     console.log(movieDetail);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-     //let body = JSON.stringify(user);
-   // console.log(body);
-    return this.http.post('http://localhost:7777/api/v1/movies/createMovie',movieDetail,options)
-    .do(data => console.log(data))
-    .catch(this.handleError)
+    return this.http.post(this.url+'v1/movies/createMovie',movieDetail,this.options).map(res=>res.json());
   }
 
   addTvShow(tvShowDetail)
   {
     console.log(tvShowDetail);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-     //let body = JSON.stringify(user);
-   // console.log(body);
-    return this.http.post('http://localhost:7777/api/v1/tvshows/createShow',tvShowDetail,options)
-    .do(data => console.log(data))
-    .catch(this.handleError)
+    return this.http.post(this.url+'v1/tvshows/createShow',tvShowDetail,this.options)
+    .map(res=>res.json());
   }
   getMovieDetail(movieID)
   {
     console.log(movieID);
-      return this.http.get('http://localhost:7777/api/v1/movies/getMovieDetail/'+movieID)
-      .map(res => res.json())
-      .do(data => console.log(data))
-      .catch(this.handleError);
+      return this.http.get(this.url+'v1/movies/getMovieDetail/'+movieID)
+      .map(res => res.json());
   }
   getTvShowDetail(showID)
   {
     console.log(showID);
-      return this.http.get('http://localhost:7777/api/v1/tvshows/getTvShowDetail/'+showID)
-      .map(res => res.json())
-      .do(data => console.log(data))
-      .catch(this.handleError);
+      return this.http.get(this.url+'v1/tvshows/getTvShowDetail/'+showID)
+      .map(res => res.json());
   }
 
   getMovieDetailByName(name)
   {
     console.log(name);
-      return this.http.get('http://localhost:7777/api/v1/movies/getMovieByName/'+name)
-      .map(res => res.json())
-      .do(data => console.log(data))
-      .catch(this.handleError);
+      return this.http.get(this.url+'v1/movies/getMovieByName/'+name)
+      .map(res => res.json());
   }
   getTvShowDetailByName(name)
   {
     console.log(name);
-      return this.http.get('http://localhost:7777/api/v1/tvshows/getTvShowDetailByName/'+name)
-      .map(res => res.json())
-      .do(data => console.log(data))
-      .catch(this.handleError);
+      return this.http.get(this.url+'v1/tvshows/getTvShowDetailByName/'+name)
+      .map(res => res.json());
   }
 
   getMovieDetailsByLanguage(language)
   {
     console.log(language);
-      return this.http.get('http://localhost:7777/api/v1/movies/getMovieByLanguage/'+language)
-      .map(res => res.json())
-      .do(data => console.log(data))
-      .catch(this.handleError);
+      return this.http.get(this.url+'v1/movies/getMovieByLanguage/'+language)
+      .map(res => res.json());
   }
   getTvShowDetailsByLanguage(language)
   {
     console.log(language);
-      return this.http.get('http://localhost:7777/api/v1/tvshows/getTvShowByLanguage/'+language)
-      .map(res => res.json())
-      .do(data => console.log(data))
-      .catch(this.handleError);
+      return this.http.get(this.url+'v1/tvshows/getTvShowByLanguage/'+language)
+      .map(res => res.json());
   }
   getMovieDetailsByGenre(genre)
   {
     console.log(genre);
-      return this.http.get('http://localhost:7777/api/v1/movies/getMovieByGenre/'+genre)
-      .map(res => res.json())
-      .do(data => console.log(data))
-      .catch(this.handleError);
+      return this.http.get(this.url+'v1/movies/getMovieByGenre/'+genre)
+      .map(res => res.json());
   }
   getTvShowDetailsByGenre(genre)
   {
     console.log(genre);
-      return this.http.get('http://localhost:7777/api/v1/tvshows/getTvShowByGenre/'+genre)
-      .map(res => res.json())
-      .do(data => console.log(data))
-      .catch(this.handleError);
+      return this.http.get(this.url+'v1/tvshows/getTvShowByGenre/'+genre)
+      .map(res => res.json());
   }
   updateMovie(movieID,movieDetail)
   {
     console.log(movieID);
     console.log(movieDetail);
-    let headers =new Headers({ 'Content-Type' : 'application/json'});
-    let options =new RequestOptions({ headers: headers });
 
-    return this.http.put('http://localhost:7777/api/v1/updateMovieDetails/'+movieID,movieDetail,options)
-    .do( date => console.log(date))
-    .catch(this.handleError);
+    return this.http.put(this.url+'v1/updateMovieDetails/'+movieID,movieDetail,this.options)
+    .map(res=>res.json());
   }
   updateTvShow(showID,tvShowDetail)
   {
     console.log(showID);
     console.log(tvShowDetail);
-    let headers =new Headers({ 'Content-Type' : 'application/json'});
-    let options =new RequestOptions({ headers: headers });
 
-    return this.http.put('http://localhost:7777/api/v1/tvshows/updateTvShowDetail/'+showID,tvShowDetail,options)
-    .do( date => console.log(date))
-    .catch(this.handleError);
+    return this.http.put(this.url+'v1/tvshows/updateTvShowDetail/'+showID,tvShowDetail,this.options)
+    .map(res=>res.json());
   }
   deleteMovie(movieID)
   {
     console.log(movieID);
-    return this.http.delete('http://localhost:7777/api/v1/deleteMovie/'+movieID)
-    .map(res => res.json())
-    .do(data => console.log(data))
-    .catch(this.handleError);
+    return this.http.delete(this.url+'v1/deleteMovie/'+movieID)
+    .map(res => res.json());
   }
   deleteTvShow(showID)
   {
     console.log(showID);
-    return this.http.delete('http://localhost:7777/api/v1/deleteTvShow/'+showID)
-    .map(res => res.json())
-    .do(data => console.log(data))
-    .catch(this.handleError);
+    return this.http.delete(this.url+'v1/deleteTvShow/'+showID)
+    .map(res => res.json());
   }
   adminMenu()
   {
@@ -218,6 +179,23 @@ console.log(typeof localStorage.getItem('user'));
           return this.user=true;
     }
   }
+  superAdminMenu()
+  {   
+    if(localStorage.getItem('user')==='superAdmin')
+    {
+    console.log("inside if");
+        console.log(this.superAdmin);
+        // this.admin=true;
+          return this.superAdmin=true;
+    }
+    if(localStorage.getItem('user')!=='superAdmin')
+    {
+    console.log("inside if");
+        console.log(this.superAdmin);
+        // this.admin=false;
+          return this.superAdmin=false;
+    }
+  }
 
   getValidUserDetail()
   {
@@ -231,67 +209,74 @@ console.log(typeof localStorage.getItem('user'));
   }
 getUserDetails()
 {
-  return this.http.get('http://localhost:7777/api/v1/user/getAllUser').map(res => res.json()).do(data => console.log(data)).catch(this.handleError);
+  return this.http.get(this.url+'v1/user/getAllUser').map(res => res.json());
+}
+ 
+getValidUserDetailEmail(email)
+{
+  return this.http.get(this.url+'v1/user/getValidUser/'+email).map(res=>res.json());
+}
+
+getAdminUser(role)
+{
+  return this.http.get(this.url+'v1/user/getUserRole/'+role).map(res=>res.json());
+}
+
+deleteAdminUser(email)
+{
+  return this.http.delete(this.url+'v1/user/deleteUser/'+email)
+  .map(res => res.json());
 }
 
 getAllTvShowsCollection()
 {
-  return this.http.get('http://localhost:7777/api/v1/tvshows/getAllTvShows').subscribe();
+  return this.http.get(this.url+'v1/tvshows/getAllTvShows')
+  .map(res => res.json());
 }
+
+getAllMovieCollection()
+{
+  return this.http.get(this.url+'v1/movies/getAllMovies')
+  .map(res => res.json());
+}
+
 getMovieList(): Observable<Movies[]>
 {
   return this.http
         .get('assets/imagesList/movies.json')
-        .map((response: Response) =><Movies[]> response.json())
-        .do(data => console.log(data))
-        .catch(this.handleError);
+        .map((response: Response) =><Movies[]> response.json());
 }
 
 getMovieList1(): Observable<Movies[]>
 {
   return this.http
         .get('assets/imagesList/movies1.json')
-        .map((response: Response) =><Movies[]> response.json())
-        .do(data => console.log(data))
-        .catch(this.handleError);
+        .map((response: Response) =><Movies[]> response.json());
 }
 getMovieLanguageList():Observable<Movies[]>
 {
   return this.http
         .get('assets/imagesList/movieLanguage.json')
-        .map((response: Response) =><Movies[]> response.json())
-        .do(data => console.log(data))
-        .catch(this.handleError);
+        .map((response: Response) =><Movies[]> response.json());
 }
 
 getTvShowList(): Observable<Movies[]>
 {
   return this.http
         .get('assets/imagesList/tvShowsInfo.json')
-        .map((response: Response) =><Movies[]> response.json())
-        .do(data => console.log(data))
-        .catch(this.handleError);
+        .map((response: Response) =><Movies[]> response.json());
 }
 
 getTvShowList1(): Observable<Movies[]>
 {
   return this.http
         .get('assets/imagesList/tvShowInfo1.json')
-        .map((response: Response) =><Movies[]> response.json())
-        .do(data => console.log(data))
-        .catch(this.handleError);
+        .map((response: Response) =><Movies[]> response.json());
 }
 getTvShowLanguageList():Observable<Movies[]>
 {
   return this.http
         .get('assets/imagesList/tvShowLanguage.json')
-        .map((response: Response) =><Movies[]> response.json())
-        .do(data => console.log(data))
-        .catch(this.handleError);
+        .map((response: Response) =><Movies[]> response.json());
 }
-  private handleError(error: Response) {
-    console.error(error);
-    let message = `Error status code ${error.status} at ${error.url}`;
-    return Observable.throw(message);
-      }
 }

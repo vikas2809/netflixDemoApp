@@ -11,10 +11,17 @@ router.route('/v1/user/create').post(controller.createUserDetails);
 //return all user
 router.route('/v1/user/getAllUser').get(controller.getAllUser);
 
+//return user on basis of role
+router.route('/v1/user/getUserRole/:role').get(controller.getUserRole);
+
+//return user on the basis of email
+router.route('/v1/user/getValidUser/:email').get(controller.getValidUser);
+
 //authenticate user and generate web token
 router.route('/v1/user/authenticateUser').post(controller.userAuthentication);
 
-
+//delete user from the user collections
+router.route('/v1/user/deleteUser/:email').delete(controller.deleteUser);
 
 
 //post movie in the movie collection
@@ -100,5 +107,13 @@ router.route('/v1/tvshows/searchResult/:name').get(controller.getTvShowSearchRes
 
 //getting the searched movie & tv Show
 router.route('/v1/moviesTvshow/searchResult/:name').get(controller.moviesTvShowsSearchResults);
+
+
+//getting the complete search results from the both movie and tv show
+router.route('/v1/searchCompleteMovies/searchResults/:name').get(controller.searchMoviesCompleteCollection);
+
+//getting the complete search results tv show
+router.route('/v1/searchCompleteTvshow/searchResults/:name').get(controller.searchTvShowsCollectionOnAllField);
+
 
 module.exports=router;

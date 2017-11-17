@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 
 
-//defining the schema of the user table
+//defining the schema of the movies table
 
 var movie_schema=mongoose.Schema;
     var movieSchema=new movie_schema({

@@ -12,6 +12,8 @@ var user_schema=mongoose.Schema;
         email: { type: String, unique: true},
         password: {type:String},
         role: { type: String},
+        visible: { type: Boolean, default: false},
+        image: { type: String},
         created_at: { type: Date, default: Date.now() },
         updated_at: { type: Date}
     });
