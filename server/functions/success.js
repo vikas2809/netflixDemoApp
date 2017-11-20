@@ -7,3 +7,12 @@
 //     let success=true;
 //     let data=res;
 // }
+
+
+exports.successResponse=function(message){
+  return {
+    "statusCode":"Enjoy your info detail",
+    "success":true,
+    "data":message
+  }
+}

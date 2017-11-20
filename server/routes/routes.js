@@ -23,6 +23,9 @@ router.route('/v1/user/authenticateUser').post(controller.userAuthentication);
 //delete user from the user collections
 router.route('/v1/user/deleteUser/:email').delete(controller.deleteUser);
 
+//update the admin image in the user collections
+router.route('/v1/user/updateUserImage/:email').put(controller.setAdminImage);
+
 
 //post movie in the movie collection
 router.route('/v1/movies/createMovie').post(controller.createMovie);

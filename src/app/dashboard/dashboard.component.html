@@ -727,7 +727,7 @@
             <div class="col-md-8">
               <button id="button1id" (click)="deleteTvShow()" type="submit" [disabled]="!deleteTvShowForm.valid" tabindex="7" class="btn btn-success">DELETE</button>
               <button id="button2id"
-              
+
               name="button2id" class="btn btn-danger">CANCEL</button>
             </div>
           </div>
@@ -764,32 +764,34 @@
 
 
 
-            <div style="margin-left:-10%;" class="container" id="wrap">
+            <div style="margin-left:-20%;" class="container" id="wrap">
               <div class="row">
                   <div class="col-md-6 col-md-offset-3">
                       <form [formGroup]="createUserAdmin" class="form">
                            <legend>Create Admin</legend>
                               <div class="row">
                                   <div class="col-xs-6 col-md-6">
-                                      <input type="text" id="first_name" formControlName="first_name" style="width:100%;" class="form-control input-lg" placeholder="First Name"  />                 
-                                      <control-messages [control]="createUserAdmin.controls.first_name"></control-messages>     
+                                      <input type="text" id="first_name" formControlName="first_name" style="width:100%;" class="form-control input-lg" placeholder="First Name"  />
+                                      <control-messages [control]="createUserAdmin.controls.first_name"></control-messages>
                                     </div>
                                   <div class="col-xs-6 col-md-6">
-                                      <input type="text" id="last_name" formControlName="last_name" style="width:100%;" class="form-control input-lg" placeholder="Last Name"  />                 
-                                      <control-messages [control]="createUserAdmin.controls.last_name"></control-messages>      
+                                      <input type="text" id="last_name" formControlName="last_name" style="width:100%;" class="form-control input-lg" placeholder="Last Name"  />
+                                      <control-messages [control]="createUserAdmin.controls.last_name"></control-messages>
                                     </div>
                               </div>
                               <input type="text" id="email" formControlName="email" style="width:100%;" class="form-control input-lg" placeholder="Your Email"  />
                               <control-messages [control]="createUserAdmin.controls.email"></control-messages>
                               <input type="password" id="password" formControlName="password" style="width:100%;" class="form-control input-lg" placeholder="Password"  />
                               <control-messages [control]="createUserAdmin.controls.password"></control-messages>
-                              <input type="password" id="password_confirmation" formControlName="password_confirmation" style="width:100%;" class="form-control input-lg" placeholder="Confirm Password"  />                   
+                              <input type="password" id="password_confirmation" formControlName="password_confirmation" style="width:100%;" class="form-control input-lg" placeholder="Confirm Password"  />
                               <control-messages [control]="createUserAdmin.controls.password_confirmation"></control-messages>
-                              <button class="btn btn-lg btn-primary btn-block signup-btn" (click)="createAdmin()" type="submit" [disabled]="!createUserAdmin.valid" tabindex="7">
+                              <input type="file" class="form-control input-lg" (change)="imageConverter($event)" name="pic" accept="image/*" style="width:100%;" id="pic">
+
+                              <button class="btn btn-lg btn-primary btn-block signup-btn" style="width:100%;" class="form-control input-lg" (click)="createAdmin()" type="submit" [disabled]="!createUserAdmin.valid" tabindex="7">
                                   Create Admin</button>
-                      </form>          
+                      </form>
                     </div>
-          </div>            
+          </div>
           </div>
 
 
@@ -823,51 +825,50 @@
                   ×</button>
             </div>
             <div class="modal-body">
-  
-  
-  
+
+
+
             <div *ngFor="let admin of adminUser">
                <a (click)="userAdminDetail(admin.email)" class="nav-link"> <i style="float:left;" class="fa fa-user fa-3x"></i></a><h3 style="float:left;margin-left:5%;margin-top:1%;">{{admin.email}}</h3><a (click)="removeUserAdmin(admin.email)" class="nav-link"><i style="margin-left:20%;" class="fa fa-remove fa-3x"></i></a>
-              </div>           
-  
+              </div>
+
                 <div class="container" *ngIf="userRoleAdminDetail">
                     <div class="row" *ngFor="let admin of validUserDetail">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="well well-sm">
                                 <div class="row">
                                     <div class="col-sm-6 col-md-4">
-                                        <img src={{admin.image}} alt="" class="img-rounded img-responsive" />
+                                        <img src="assets/adminImages/{{admin.image}}" alt="" class="img-rounded img-responsive" (change)="imageConverter($event)"/>
                                     </div>
                                     <div class="col-sm-6 col-md-8">
                                         <h1>
                                             {{admin.firstName}} {{admin.lastName}}</h1>
-        
+
                                         <!-- <p> -->
                                             <i class="glyphicon glyphicon-envelope"></i>{{admin.email}}
                                             <br />
                                             <!-- <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a> -->
                                            <br>
-                                            <input type="file" class="form-control input-lg" name="pic" accept="image/*" style="width:100%;" id="pic">
+                                            <!-- <input type="file" class="form-control input-lg" (change)="imageConverter($event)" name="pic" accept="image/*" style="width:100%;" id="pic"> -->
                                           </div>
+                                          <!-- <button (click)="setAdminImage(admin.email)" style="margin-left:10%;margin-top:2%;" class="btn btn-primary">Upload</button> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  </div>
-  </div>
-  </div>
-  </div>
 
 
+
+
+
+
+
+
+
+
+
+  </div>
+  </div>
+  </div>
+  </div>

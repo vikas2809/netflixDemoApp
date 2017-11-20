@@ -65,6 +65,7 @@ user_info:any={};
 adminUser:any=[];
 validUserDetail:any=[];
 userRoleAdminDetail:boolean=false;
+base64:any;
   constructor(private formBuilder: FormBuilder,private userService:UserService,private router:Router) {
     this.userService.logout=true;
     this.userService.login=false;
@@ -143,7 +144,7 @@ userRoleAdminDetail:boolean=false;
     // 'image_pic': [''],
   },
   {
-    validator: ValidationService.MatchPassword // your validation method 
+    validator: ValidationService.MatchPassword // your validation method
   });
 
 
@@ -242,7 +243,7 @@ userRoleAdminDetail:boolean=false;
               alert("Movie Inserted Successfully");
               this.addPopUp=false;
             }
-               
+
             // console.log(nextThat.successMsg);
             if(response.errmsg!==undefined)
             {
@@ -333,7 +334,7 @@ findMovie() {
       console.log(this.validMovieDetails);
       this.movieToBeUpdatedDetails=true;
     }
-   
+
     }
   }
 
@@ -435,14 +436,14 @@ findMovie() {
    this.updateMovie=false;
   }
 
- 
+
 
   findTvShow() {
     if (this.findTvShowForm.dirty && this.findTvShowForm.valid) {
-  
+
       console.log(this.findTvShowForm.value.tvShowName);
       var findshow=this.findTvShowForm.value.tvShowName;
-  
+
       this.validTvShowDetails=this.completeTvShowDetails.filter(function(show){
         // var searchName=/findmovie/;
         var tempName=show.name;
@@ -460,7 +461,7 @@ findMovie() {
         console.log(this.validTvShowDetails);
         this.tvShowToBeUpdatedDetails=true;
       }
-     
+
       }
     }
 
@@ -564,17 +565,17 @@ findMovie() {
     }
 
 
-    //method for deleting the movie 
+    //method for deleting the movie
     findMovieToBeDeleted()
     {
       if (this.deleteMovieForm.dirty && this.deleteMovieForm.valid) {
-        
+
             console.log(this.deleteMovieForm.value.movieName);
             console.log(this.deleteMovieForm.value.confirmMovieName);
             if(this.deleteMovieForm.value.movieName===this.deleteMovieForm.value.confirmMovieName)
             {
             var findmovie=this.deleteMovieForm.value.movieName;
-        
+
             this.validMovieDetails=this.completeMovieDetails.filter(function(movie){
               // var searchName=/findmovie/;
               var tempName=movie.name;
@@ -592,7 +593,7 @@ findMovie() {
               console.log(this.validMovieDetails);
               this.movieToBeDeleted=true;
             }
-           
+
             }
             else
             {
@@ -602,11 +603,16 @@ findMovie() {
     }
     deleteMovieDetails()
     {
-      
+
     }
     createAdmin()
     {
       if (this.createUserAdmin.dirty && this.createUserAdmin.valid) {
+        if(this.base64===undefined)
+          alert("Please first select the image");
+          else
+          {
+        console.log("Image"+this.base64);
         console.log(this.createUserAdmin.value.first_name);
         console.log(this.createUserAdmin.value.last_name);
         console.log(this.createUserAdmin.value.email);
@@ -617,6 +623,7 @@ findMovie() {
         console.log(updated_at);
         console.log(typeof updated_at);
         let role='admin';
+        let image_pic=this.base64;
         //Encrypt the Passwort with Base64
       var key = CryptoJS.enc.Base64.parse("#base64Key#");
       var iv  = CryptoJS.enc.Base64.parse("#base64IV#");
@@ -629,15 +636,18 @@ findMovie() {
         // password:this.userForm.value.password,
         email:this.createUserAdmin.value.email,
         role:role,
+        image:image_pic,
         created_at:"",
-        visible:"",
         updated_at:updated_at,
       }
       console.log(this.create_admin);
       let that=this;
+      if(this.base64!==undefined)
+      {
       this.userService.addUser(this.create_admin).subscribe(
         function(response){
           console.log(typeof response);
+          console.log(response);
           if(response.success===true)
           alert("Created Successfully!!!");
           if(response.errmsg!==null&&response.errmsg!==undefined)
@@ -645,9 +655,61 @@ findMovie() {
           // console.log(responseData);
         }
       )
+    }
+      }
       }
     }
+    imageConverter($event)
+    {
+      alert("inside onchange"+event);
+      console.log(event);
+      console.log(event.target);
+      this.encodeImageFileAsURL(event.target);
+   //    var files = event.target.files;
+   //   var file = files[0];
+   //
+   // if (files && file) {
+   //     var reader = new FileReader();
+   //
+   //     reader.onload =this._handleReaderLoaded.bind(this);
+   //
+   //     reader.readAsBinaryString(file);
+   // }
+    }
+    encodeImageFileAsURL(element) {
+        var file = element.files[0];
+        var reader = new FileReader();
+        reader.onloadend = (data => {
+          this.base64 = reader.result;
+          // this.user={ image_pic:this.base64}
+          this.create_admin={image:this.base64}
+          // console.log(this.base64);
+          //console.log('RESULT', reader.result)
+        })
 
+        var image=this.base64;
+        // console.log(image);
+        reader.readAsDataURL(file);
+        //console.log(this.base64);
+    }
+    // setAdminImage(email)
+    // {
+    //   if(this.base64===undefined)
+    //   alert("Please first select the image");
+    //   else
+    //   {
+    //     // console.log(this.base64);
+    //     var image_pic=this.base64;
+    //     alert(this.base64);
+    //     // console.log(image);
+    //     alert("Image in the upload section"+image_pic+"Image in the upload");
+    //   }
+    //   let imageDetail={
+    //     image:image_pic
+    //   }
+    //   console.log(imageDetail);
+    //   this.userService.updateAdminImage(email,imageDetail)
+    // }
     getAllAdmin()
     {
       let role="admin";
@@ -679,4 +741,3 @@ findMovie() {
     }
 
 }
-

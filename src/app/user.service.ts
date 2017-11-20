@@ -180,7 +180,7 @@ console.log(typeof localStorage.getItem('user'));
     }
   }
   superAdminMenu()
-  {   
+  {
     if(localStorage.getItem('user')==='superAdmin')
     {
     console.log("inside if");
@@ -211,7 +211,7 @@ getUserDetails()
 {
   return this.http.get(this.url+'v1/user/getAllUser').map(res => res.json());
 }
- 
+
 getValidUserDetailEmail(email)
 {
   return this.http.get(this.url+'v1/user/getValidUser/'+email).map(res=>res.json());
@@ -226,6 +226,19 @@ deleteAdminUser(email)
 {
   return this.http.delete(this.url+'v1/user/deleteUser/'+email)
   .map(res => res.json());
+}
+
+updateAdminImage(email,imageDetail)
+{
+  console.log(email);
+  console.log(imageDetail);
+
+  if(imageDetail!==undefined)
+  {
+      console.log(imageDetail);
+      return this.http.put(this.url+'v1/user/updateUserImage/'+email,imageDetail,this.options).map(res=>res.json());
+  }
+  //  return this.http.put(this.url,'v1/user/updateUserImage/'+email,imageDetail,this.options).map(res=>res.json());
 }
 
 getAllTvShowsCollection()

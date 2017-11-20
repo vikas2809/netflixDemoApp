@@ -11,9 +11,11 @@ var app=module.exports=express();
 
 app.set('env',process.env.NODE_ENV || 'production');
 
-app.use(body_parser.urlencoded({ extended : true}));
+app.use(body_parser.urlencoded({limit: '50mb', extended : true}));
 
-app.use(body_parser.json());
+// app.use(express.bodyParser({limit: '50mb'}));
+
+app.use(body_parser.json({limit: '50mb'}));
 
 routes=require('./routes/routes');
 app.use('/api',routes);

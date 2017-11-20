@@ -33,10 +33,10 @@ export class SignUpComponent implements OnInit {
       // 'image_pic': [''],
     },
     {
-      validator: ValidationService.MatchPassword // your validation method 
+      validator: ValidationService.MatchPassword // your validation method
     });
-    
- 
+
+
 
    }
 
@@ -48,25 +48,25 @@ export class SignUpComponent implements OnInit {
     this.router.navigate(['\login']);
   }
 
-  changeListener(event) {
-    console.log(event.target)
-    this.encodeImageFileAsURL(event.target)
-  }
-  encodeImageFileAsURL(element) {
-    var file = element.files[0];
-    var reader = new FileReader();
-    reader.onloadend = (data => {
-      this.base64 = reader.result;
-      this.user={ image_pic:this.base64}
-      console.log(this.base64);
-      //console.log('RESULT', reader.result)
-    })
-
-    var image=this.base64;
-    console.log(image);
-    reader.readAsDataURL(file);
-    //console.log(this.base64);
-  }
+  // changeListener(event) {
+  //   console.log(event.target)
+  //   this.encodeImageFileAsURL(event.target)
+  // }
+  // encodeImageFileAsURL(element) {
+  //   var file = element.files[0];
+  //   var reader = new FileReader();
+  //   reader.onloadend = (data => {
+  //     this.base64 = reader.result;
+  //     this.user={ image_pic:this.base64}
+  //     console.log(this.base64);
+  //     //console.log('RESULT', reader.result)
+  //   })
+  //
+  //   var image=this.base64;
+  //   console.log(image);
+  //   reader.readAsDataURL(file);
+  //   //console.log(this.base64);
+  // }
   saveUser(image_path) {
     if (this.userForm.dirty && this.userForm.valid) {
       // alert(`Name: ${this.userForm.value.first_name} Email: ${this.userForm.value.email}`);
